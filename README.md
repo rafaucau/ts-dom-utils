@@ -16,6 +16,7 @@ yarn add ts-dom-utils
 - Strong TypeScript typings for better editor autocompletion and error checking.
 - Compatible with both TypeScript and JavaScript projects.
 - Simple and intuitive API.
+- Tree-shakeable
 
 
 ## Functions

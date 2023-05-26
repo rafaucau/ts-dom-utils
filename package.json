@@ -20,12 +20,13 @@
     "typescript",
     "utilities"
   ],
-  "author": "rafaucau",
+  "author": "rafaucau (https://github.com/rafaucau)",
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/rafaucau/ts-dom-utils/issues"
   },
   "homepage": "https://github.com/rafaucau/ts-dom-utils#readme",
+  "funding": "https://github.com/rafaucau/ts-dom-utils?sponsor=1",
   "devDependencies": {
     "prettier": "^2.8.8",
     "tsup": "^6.7.0",
