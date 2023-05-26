@@ -47,6 +47,24 @@ document.body.appendChild(button);
 | target  | document  | The Document in which to create the element.                                                                                                                                                   |
 ---
 
+## `DOMisReady`
+`DOMisReady` is a Promise that resolves when the DOM is ready, i.e., when the document's `readyState` is not 'loading'. This can be used to delay script execution until the DOM is fully constructed and can be safely manipulated.
+
+```typescript
+import { DOMisReady } from 'ts-dom-utils';
+
+// using then
+DOMisReady.then(() => {
+  // DOM manipulation code here
+});
+
+// using async/await
+await DOMisReady;
+// DOM manipulation code here
+```
+
+---
+
 ### `qs`
 A wrapper function for `document.querySelector`.
 
