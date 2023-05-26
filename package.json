@@ -1,0 +1,34 @@
+{
+  "name": "ts-dom-utils",
+  "version": "1.0.0",
+  "description": "A simple, typeful utility library for DOM manipulation in TypeScript.",
+  "main": "dist/index.cjs",
+  "module": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "type": "module",
+  "sideEffects": false,
+  "scripts": {
+    "build": "tsup --dts",
+    "lint": "tsc"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/rafaucau/ts-dom-utils.git"
+  },
+  "keywords": [
+    "dom",
+    "typescript",
+    "utilities"
+  ],
+  "author": "rafaucau",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/rafaucau/ts-dom-utils/issues"
+  },
+  "homepage": "https://github.com/rafaucau/ts-dom-utils#readme",
+  "devDependencies": {
+    "prettier": "^2.8.8",
+    "tsup": "^6.7.0",
+    "typescript": "^5.0.4"
+  }
+}

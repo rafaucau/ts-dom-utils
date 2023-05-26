@@ -1,0 +1,6 @@
+.idea
+.gitignore
+.prettierrc
+.github
+tsup.config.json
+src/
