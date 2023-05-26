@@ -45,6 +45,7 @@ document.body.appendChild(button);
 | tagName | undefined | The tag name of the element type to create.                                                                                                                                                    |
 | options | {}        | The options to use when creating the element. Options can include any attributes that can be passed to `setAttribute`, with `class`, `dataset`, and `text` as special options for enhancement. |
 | target  | document  | The Document in which to create the element.                                                                                                                                                   |
+---
 
 ### `qs`
 A wrapper function for `document.querySelector`.
@@ -61,6 +62,7 @@ const button = qs<HTMLButtonElement>('button', wrapper);
 | selector | undefined  | The selector to match against.                      |
 | parent   | document   | The ParentNode in which to search for the selector. |
 
+---
 
 ### `qsa`
 A wrapper function for `document.querySelectorAll`.
