@@ -6,7 +6,7 @@ on:
     types: [review_requested]
 
 jobs:
-  build:
+  lint:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
