@@ -15,7 +15,7 @@
  *   // DOM manipulation code here
  * })();
  */
-const DOMisReady = new Promise<void>((resolve) => {
+export default new Promise<void>((resolve) => {
   if (document.readyState !== 'loading') {
     return resolve();
   } else {
@@ -24,5 +24,3 @@ const DOMisReady = new Promise<void>((resolve) => {
     });
   }
 });
-
-export default DOMisReady;
