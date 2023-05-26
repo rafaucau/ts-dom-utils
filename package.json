@@ -1,7 +1,7 @@
 {
   "name": "ts-dom-utils",
   "version": "1.0.0",
-  "description": "A simple, typeful utility library for DOM manipulation in TypeScript.",
+  "description": "A simple utility library for DOM manipulation. Provides TypeScript typings for enhanced development experience in TS environments.",
   "main": "dist/index.cjs",
   "module": "dist/index.js",
   "types": "dist/index.d.ts",
