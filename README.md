@@ -25,6 +25,8 @@ Creates a new element with the provided options.
 
 Example
 ```typescript
+import { createElement } from 'ts-dom-utils';
+
 const button = createElement('button', {
   id: 'my-button',
   'aria-expandended': 'false',
@@ -49,6 +51,8 @@ A wrapper function for `document.querySelector`.
 
 Example
 ```typescript
+import { qs } from 'ts-dom-utils';
+
 const wrapper = qs<HTMLDivElement>('.footer > .buttons');
 const button = qs<HTMLButtonElement>('button', wrapper);
 ```
@@ -63,6 +67,8 @@ A wrapper function for `document.querySelectorAll`.
 
 Example
 ```typescript
+import { qsa } from 'ts-dom-utils';
+
 const buttons = qsa<HTMLButtonElement>('.btn');
 ```
 
