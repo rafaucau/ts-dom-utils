@@ -2,5 +2,6 @@
 .gitignore
 .prettierrc
 .github
-tsup.config.json
+tsup.config.ts
+tsconfig.json
 src/
