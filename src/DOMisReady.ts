@@ -3,12 +3,14 @@
  * until the DOM is fully constructed and can be safely manipulated.
  *
  * @example
+ * import { DOMisReady } from 'ts-dom-utils';
  * // using then
  * DOMisReady.then(() => {
  *   // DOM manipulation code here
  * });
  *
  * @example
+ * import { DOMisReady } from 'ts-dom-utils';
  * // using async/await
  * (async function() {
  *   await DOMisReady;

@@ -3,6 +3,22 @@
  * @param tagName - The name of the element type to create.
  * @param options - The options to use when creating the element.
  * @param target - The Document in which to create the element. Defaults to the current document.
+ *
+ * @example
+ * import { createElement } from 'ts-dom-utils';
+ *
+ * const button = createElement('button', {
+ *   id: 'my-button',
+ *   class: ['btn', 'btn-primary'],
+ *   text: 'Click me',
+ *   dataset: {
+ *     action: 'open-menu',
+ *   },
+ *   'aria-expandended': 'false',
+ * });
+
+ * document.body.appendChild(button);
+ * // <button id="my-button" class="btn btn-primary" data-action="open-menu" aria-expandended="false">Click me</button>
  */
 export default function createElement<K extends keyof HTMLElementTagNameMap>(
   tagName: K,

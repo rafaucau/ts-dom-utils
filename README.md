@@ -30,15 +30,16 @@ import { createElement } from 'ts-dom-utils';
 
 const button = createElement('button', {
   id: 'my-button',
-  'aria-expandended': 'false',
   class: ['btn', 'btn-primary'],
   text: 'Click me',
   dataset: {
-    action: 'open-modal',
+    action: 'open-menu',
   },
+  'aria-expandended': 'false',
 });
 
 document.body.appendChild(button);
+// <button id="my-button" class="btn btn-primary" data-action="open-menu" aria-expandended="false">Click me</button>
 ```
 
 | Param   | Default   | Description                                                                                                                                                                                    |
@@ -73,8 +74,8 @@ Example
 ```typescript
 import { qs } from 'ts-dom-utils';
 
-const wrapper = qs<HTMLDivElement>('.footer > .buttons');
-const button = qs<HTMLButtonElement>('button', wrapper);
+const container = qs<HTMLDivElement>('.footer > .buttons');
+const button = qs<HTMLButtonElement>('button', container);
 ```
 | Param    | Default    | Description                                         |
 |----------|------------|-----------------------------------------------------|
@@ -91,6 +92,9 @@ Example
 import { qsa } from 'ts-dom-utils';
 
 const buttons = qsa<HTMLButtonElement>('.btn');
+
+const menu = qs<HTMLDivElement>('.menu');
+const menuButtons = qsa<HTMLButtonElement>('.btn', menu);
 ```
 
 | Param    | Default   | Description                                         |
