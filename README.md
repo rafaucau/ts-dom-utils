@@ -3,6 +3,19 @@ A lightweight TypeScript library that provides simple wrappers around common DOM
 It allows you to write less code.
 Although it's written in TypeScript, it can also be used in JavaScript projects.
 
+## Table of Contents
+
+
+- [Installation](#installation)
+- [Features](#features)
+- [Functions](#functions)
+    - [createElement](#createelement)
+    - [DOMisReady](#domisready)
+    - [qs](#qs)
+    - [qsa](#qsa)
+- [How to Contribute](#how-to-contribute)
+- [Support This Project](#support-this-project)
+
 ## Installation
 
 ```shell
@@ -101,3 +114,11 @@ const menuButtons = qsa<HTMLButtonElement>('.btn', menu);
 |----------|-----------|-----------------------------------------------------|
 | selector | undefined | The selector to match against.                      |
 | parent   | document  | The ParentNode in which to search for the selector. |
+
+## How to Contribute
+
+We welcome any contributions! If you have an idea for a new feature or tool, please feel free to open an issue to discuss it. You can also submit a pull request if you've developed a feature or fix that you'd like to contribute back.
+
+### Support This Project
+
+This project is developed and maintained by a single developer. If you find it useful and would like to support its continued development, you can do so through [GitHub Sponsors](https://github.com/rafaucau/ts-dom-utils?sponsor=1). Any amount is appreciated!
