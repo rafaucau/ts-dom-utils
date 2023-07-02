@@ -63,21 +63,31 @@ document.body.appendChild(button);
 ---
 
 ## `DOMisReady`
-`DOMisReady` is a Promise that resolves when the DOM is ready, i.e., when the document's `readyState` is not 'loading'. This can be used to delay script execution until the DOM is fully constructed and can be safely manipulated.
-
+`DOMisReady` is a function that returns a Promise. This Promise resolves when the provided DOM is ready, i.e., when the document's readyState is not 'loading'. This can be used to delay script execution until the DOM is fully constructed and can be safely manipulated.
 ```typescript
-import { DOMisReady } from 'ts-dom-utils';
+import { DOMisReady, qs } from 'ts-dom-utils';
 
 // using then
-DOMisReady.then(() => {
+DOMisReady().then(() => {
   // DOM manipulation code here
 });
 
 // using async/await
-await DOMisReady;
-// DOM manipulation code here
-```
+(async function() {
+  await DOMisReady();
+  // DOM manipulation code here
+})();
 
+// checking if an iframe's document is ready
+const iframe = qs<HTMLIFrameElement>('iframe');
+DOMisReady(iframe.contentDocument).then(() => {
+  // iframe DOM manipulation code here
+});
+
+```
+| Param | Default   | Description             |
+|-------|-----------|-------------------------|
+| doc   | document  | The Document to check.  |
 ---
 
 ### `qs`
