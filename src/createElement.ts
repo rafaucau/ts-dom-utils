@@ -22,7 +22,8 @@
  */
 export default function createElement<K extends keyof HTMLElementTagNameMap>(
   tagName: K,
-  options: CreateElementOptions = {},
+  options: Partial<Omit<HTMLElementTagNameMap[K], keyof SpecialAttributes>> &
+    SpecialAttributes = {},
   target = document,
 ): HTMLElementTagNameMap[K] {
   const element = target.createElement(tagName);
@@ -50,16 +51,19 @@ export default function createElement<K extends keyof HTMLElementTagNameMap>(
       return;
     }
 
+    if (key in element) {
+      (element as any)[key] = value;
+      return;
+    }
+
     element.setAttribute(key, value as string);
   });
 
   return element;
 }
 
-// FIXME try to use string type instead of any
-export type CreateElementOptions = {
-  [key: string]: any;
-  class?: string | string[];
-  dataset?: Record<string, string>;
-  text?: string;
-};
+export type SpecialAttributes = Partial<{
+  class: string | string[];
+  dataset: Record<string, string>;
+  text: string;
+}>;
