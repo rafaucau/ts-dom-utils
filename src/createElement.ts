@@ -23,7 +23,7 @@
 export default function createElement<K extends keyof HTMLElementTagNameMap>(
   tagName: K,
   options: CreateElementOptions = {},
-  target = document
+  target = document,
 ): HTMLElementTagNameMap[K] {
   const element = target.createElement(tagName);
   Object.entries(options).forEach(([key, value]) => {
@@ -40,7 +40,7 @@ export default function createElement<K extends keyof HTMLElementTagNameMap>(
       Object.entries(value as Record<string, string>).forEach(
         ([dataKey, dataValue]) => {
           element.dataset[dataKey] = dataValue;
-        }
+        },
       );
       return;
     }

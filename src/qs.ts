@@ -11,7 +11,7 @@
  */
 export default function qs<E extends Element>(
   selector: string,
-  parent: ParentNode = document
+  parent: ParentNode = document,
 ) {
   return parent.querySelector<E>(selector);
 }

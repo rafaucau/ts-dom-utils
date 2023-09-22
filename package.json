@@ -9,7 +9,8 @@
   "sideEffects": false,
   "scripts": {
     "build": "tsup --dts",
-    "lint": "tsc"
+    "lint": "tsc",
+    "format": "prettier --write ./src"
   },
   "repository": {
     "type": "git",

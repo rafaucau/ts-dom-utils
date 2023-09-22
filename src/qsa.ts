@@ -14,7 +14,7 @@
  */
 export default function qsa<E extends Element>(
   selector: string,
-  parent: ParentNode = document
+  parent: ParentNode = document,
 ): NodeListOf<E> {
   return parent.querySelectorAll<E>(selector);
 }
