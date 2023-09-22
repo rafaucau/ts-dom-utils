@@ -22,8 +22,7 @@
  */
 export default function createElement<K extends keyof HTMLElementTagNameMap>(
   tagName: K,
-  options: Partial<Omit<HTMLElementTagNameMap[K], keyof SpecialAttributes>> &
-    SpecialAttributes = {},
+  options: CreateElementOptions<K> = {},
   target = document,
 ): HTMLElementTagNameMap[K] {
   const element = target.createElement(tagName);
@@ -34,36 +33,36 @@ export default function createElement<K extends keyof HTMLElementTagNameMap>(
       } else {
         element.classList.add(value as string);
       }
-      return;
-    }
-
-    if (key === 'dataset' && typeof value === 'object' && value !== null) {
+    } else if (
+      key === 'dataset' &&
+      typeof value === 'object' &&
+      value !== null
+    ) {
       Object.entries(value as Record<string, string>).forEach(
         ([dataKey, dataValue]) => {
           element.dataset[dataKey] = dataValue;
         },
       );
-      return;
-    }
-
-    if (key === 'text') {
+    } else if (key === 'text') {
       element.textContent = value as string;
       return;
-    }
-
-    if (key in element) {
+    } else if (key in element) {
       (element as any)[key] = value;
       return;
+    } else {
+      element.setAttribute(key, value as string);
     }
-
-    element.setAttribute(key, value as string);
   });
 
   return element;
 }
 
-export type SpecialAttributes = Partial<{
-  class: string | string[];
-  dataset: Record<string, string>;
-  text: string;
-}>;
+type SpecialAttributes = {
+  class?: string | string[];
+  dataset?: Record<string, string>;
+  text?: string;
+};
+
+export type CreateElementOptions<K extends keyof HTMLElementTagNameMap> =
+  (Partial<Omit<HTMLElementTagNameMap[K], keyof SpecialAttributes>> &
+    SpecialAttributes) & { [key: string]: any };
