@@ -1,6 +1,6 @@
 {
   "name": "ts-dom-utils",
-  "version": "2.0.0",
+  "version": "2.0.1",
   "description": "A simple utility library for DOM manipulation. Provides TypeScript typings for enhanced development experience in TS environments.",
   "main": "dist/index.cjs",
   "module": "dist/index.js",
@@ -28,8 +28,8 @@
   "homepage": "https://github.com/rafaucau/ts-dom-utils#readme",
   "funding": "https://github.com/rafaucau/ts-dom-utils?sponsor=1",
   "devDependencies": {
-    "prettier": "^2.8.8",
-    "tsup": "^7.1.0",
-    "typescript": "^5.1.6"
+    "prettier": "^3.0.3",
+    "tsup": "^7.2.0",
+    "typescript": "^5.2.2"
   }
 }
