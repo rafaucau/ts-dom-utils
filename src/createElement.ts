@@ -11,6 +11,9 @@
  *   id: 'my-button',
  *   class: ['btn', 'btn-primary'],
  *   text: 'Click me',
+ *   onclick: (event) => {
+ *    console.log('clicked!', event)
+ *   },
  *   dataset: {
  *     action: 'open-menu',
  *   },
@@ -27,30 +30,34 @@ export default function createElement<K extends keyof HTMLElementTagNameMap>(
 ): HTMLElementTagNameMap[K] {
   const element = target.createElement(tagName);
   Object.entries(options).forEach(([key, value]) => {
+    if (value === undefined || value === null) return;
+
+    // class key
     if (key === 'class') {
+      // class can be a string or an array of strings
       if (Array.isArray(value)) {
         element.classList.add(...value);
-      } else {
-        element.classList.add(value as string);
+      } else if (typeof value === 'string') {
+        element.classList.add(value);
       }
-    } else if (
-      key === 'dataset' &&
-      typeof value === 'object' &&
-      value !== null
-    ) {
-      Object.entries(value as Record<string, string>).forEach(
-        ([dataKey, dataValue]) => {
-          element.dataset[dataKey] = dataValue;
-        },
-      );
-    } else if (key === 'text') {
-      element.textContent = value as string;
-      return;
-    } else if (key in element) {
-      (element as any)[key] = value;
-      return;
-    } else {
-      element.setAttribute(key, value as string);
+    }
+    // text key
+    else if (key === 'text') {
+      element.textContent = value;
+    }
+    // any other key
+    else if (key in element) {
+      if (typeof value === 'object' && !Array.isArray(value)) {
+        Object.entries(value).forEach(([subKey, subValue]) => {
+          (element as any)[key][subKey] = subValue;
+        });
+      } else {
+        (element as any)[key] = value;
+      }
+    }
+    // any other attribute
+    else {
+      element.setAttribute(key, value);
     }
   });
 
@@ -59,8 +66,8 @@ export default function createElement<K extends keyof HTMLElementTagNameMap>(
 
 type SpecialAttributes = {
   class?: string | string[];
-  dataset?: Record<string, string>;
   text?: string;
+  style?: Partial<CSSStyleDeclaration>;
 };
 
 export type CreateElementOptions<K extends keyof HTMLElementTagNameMap> =
