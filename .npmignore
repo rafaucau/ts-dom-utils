@@ -5,3 +5,4 @@
 tsup.config.ts
 tsconfig.json
 src/
+.changeset/
