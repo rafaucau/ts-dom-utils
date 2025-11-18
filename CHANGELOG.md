@@ -1,5 +1,11 @@
 # ts-dom-utils
 
+## 2.2.1
+
+### Patch Changes
+
+- ad96903: Update dependecies
+
 ## 2.2.0
 
 ### Minor Changes
