@@ -1,5 +1,11 @@
 # ts-dom-utils
 
+## 2.3.1
+
+### Patch Changes
+
+- 575a6b9: Fix module and types resolution by adding the `"exports"` field to `package.json`. This ensures that correct types (`.d.ts` for ESM and `.d.cts` for CJS) and module formats are loaded depending on the environment and import method (`import` vs `require`), fixing compatibility with modern Node.js and strict bundler configurations.
+
 ## 2.3.0
 
 ### Minor Changes
