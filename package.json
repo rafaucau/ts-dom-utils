@@ -6,6 +6,9 @@
   "types": "dist/index.d.ts",
   "type": "module",
   "sideEffects": false,
+  "files": [
+    "dist"
+  ],
   "exports": {
     ".": {
       "import": {

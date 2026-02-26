@@ -1,8 +1,0 @@
-.idea
-.gitignore
-.prettierrc
-.github
-tsup.config.ts
-tsconfig.json
-src/
-.changeset/
