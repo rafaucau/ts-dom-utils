@@ -94,24 +94,24 @@ DOMisReady(iframe.contentDocument).then(() => {
 ---
 
 ### `qs`
-A wrapper function for `document.querySelector`.
+A wrapper function for `querySelector`.
 
 Example
 ```typescript
 import { qs } from 'ts-dom-utils';
 
 const container = qs<HTMLDivElement>('.footer > .buttons');
-const button = qs<HTMLButtonElement>('button', container);
+const button = qs('button', container);
 ```
-| Param    | Default    | Description                                         |
-|----------|------------|-----------------------------------------------------|
-| selector | undefined  | The selector to match against.                      |
-| parent   | document   | The ParentNode in which to search for the selector. |
+| Param    | Default   | Description                      |
+|----------|-----------|----------------------------------|
+| selector | undefined | The selector to match against.   |
+| parent   | document  | The ParentNode to search within. |
 
 ---
-
+ 
 ### `qsa`
-A wrapper function for `document.querySelectorAll`.
+A wrapper function for `querySelectorAll`.
 
 Example
 ```typescript
@@ -123,10 +123,10 @@ const menu = qs<HTMLDivElement>('.menu');
 const menuButtons = qsa<HTMLButtonElement>('.btn', menu);
 ```
 
-| Param    | Default   | Description                                         |
-|----------|-----------|-----------------------------------------------------|
-| selector | undefined | The selector to match against.                      |
-| parent   | document  | The ParentNode in which to search for the selector. |
+| Param    | Default   | Description                      |
+|----------|-----------|----------------------------------|
+| selector | undefined | The selector to match against.   |
+| parent   | document  | The ParentNode to search within. |
 
 ## How to Contribute
 

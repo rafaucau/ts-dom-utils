@@ -1,20 +1,29 @@
 /**
  * QuerySelectorAll wrapper function.
  * @param selector - The selector to match against.
- * @param parent - The ParentNode in which to search for the selector. Defaults to the entire document.
+ * @param parent - The ParentNode to search within. Defaults to `document`.
+ * @returns A NodeList of all matching Elements.
  *
  * @example
- * import { qsa } from 'ts-dom-utils';
- * const buttons = qsa<HTMLButtonElement>('.btn');
- *
- * @example
- * import { qsa } from 'ts-dom-utils';
- * const menu = qs<HtmlNavElement>('.menu');
- * const menuButtons = qsa<HTMLButtonElement>('.btn', menu);
+ * const wrapper = qs('div');
+ * const buttons = qsa<HTMLButtonElement>('.btn', wrapper);
  */
-export default function qsa<E extends Element>(
+export default function qsa<K extends keyof HTMLElementTagNameMap>(
+  selector: K,
+  parent?: ParentNode,
+): NodeListOf<HTMLElementTagNameMap[K]>;
+export default function qsa<K extends keyof SVGElementTagNameMap>(
+  selector: K,
+  parent?: ParentNode,
+): NodeListOf<SVGElementTagNameMap[K]>;
+export default function qsa<K extends keyof MathMLElementTagNameMap>(
+  selector: K,
+  parent?: ParentNode,
+): NodeListOf<MathMLElementTagNameMap[K]>;
+export default function qsa<E extends Element = Element>(
   selector: string,
-  parent: ParentNode = document,
-): NodeListOf<E> {
-  return parent.querySelectorAll<E>(selector);
+  parent?: ParentNode,
+): NodeListOf<E>;
+export default function qsa(selector: string, parent: ParentNode = document) {
+  return parent.querySelectorAll(selector);
 }

@@ -1,17 +1,29 @@
 /**
  * QuerySelector wrapper function.
- * @param selector The selector to match against.
- * @param parent The ParentNode in which to search for the selector.
- * @returns The first Element within the document that matches the specified selector, or group of selectors.
+ * @param selector - The selector to match against.
+ * @param parent - The ParentNode to search within. Defaults to `document`.
+ * @returns The first matching Element, or `null`.
  *
  * @example
- * import { qs } from 'ts-dom-utils';
- * const menu = qs<HTMLDivElement>('.menu');
- * const menuButtons = qsa<HTMLButtonElement>('.btn', menu);
+ * const wrapper = qs('div');
+ * const btn = qs<HTMLButtonElement>('.btn', wrapper);
  */
-export default function qs<E extends Element>(
+export default function qs<K extends keyof HTMLElementTagNameMap>(
+  selector: K,
+  parent?: ParentNode,
+): HTMLElementTagNameMap[K] | null;
+export default function qs<K extends keyof SVGElementTagNameMap>(
+  selector: K,
+  parent?: ParentNode,
+): SVGElementTagNameMap[K] | null;
+export default function qs<K extends keyof MathMLElementTagNameMap>(
+  selector: K,
+  parent?: ParentNode,
+): MathMLElementTagNameMap[K] | null;
+export default function qs<E extends Element = Element>(
   selector: string,
-  parent: ParentNode = document,
-) {
-  return parent.querySelector<E>(selector);
+  parent?: ParentNode,
+): E | null;
+export default function qs(selector: string, parent: ParentNode = document) {
+  return parent.querySelector(selector);
 }
