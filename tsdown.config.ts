@@ -7,5 +7,9 @@ export default defineConfig((options) => {
     entry: ['src/**/*.ts'],
     dts: true,
     platform: 'browser',
+    publint: true,
+    attw: {
+      profile: 'node16',
+    },
   };
 });

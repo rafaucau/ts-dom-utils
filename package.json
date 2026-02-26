@@ -3,10 +3,21 @@
   "version": "2.3.0",
   "description": "A simple utility library for DOM manipulation. Provides TypeScript typings for enhanced development experience in TS environments.",
   "main": "dist/index.cjs",
-  "module": "dist/index.js",
   "types": "dist/index.d.ts",
   "type": "module",
   "sideEffects": false,
+  "exports": {
+    ".": {
+      "import": {
+        "types": "./dist/index.d.ts",
+        "default": "./dist/index.js"
+      },
+      "require": {
+        "types": "./dist/index.d.cts",
+        "default": "./dist/index.cjs"
+      }
+    }
+  },
   "scripts": {
     "build": "tsdown",
     "dev": "tsdown --watch",
@@ -31,8 +42,10 @@
   "homepage": "https://github.com/rafaucau/ts-dom-utils#readme",
   "funding": "https://github.com/rafaucau/ts-dom-utils?sponsor=1",
   "devDependencies": {
+    "@arethetypeswrong/core": "^0.18.2",
     "@changesets/cli": "^2.29.8",
     "prettier": "^3.8.1",
+    "publint": "^0.3.17",
     "tsdown": "^0.21.0-beta.2",
     "typescript": "^5.9.3"
   }
