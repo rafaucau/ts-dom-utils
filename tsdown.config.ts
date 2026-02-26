@@ -1,10 +1,11 @@
-import { defineConfig } from 'tsup';
+import { defineConfig } from 'tsdown';
 
 export default defineConfig((options) => {
   return {
     minify: !options.watch,
-    format: ['cjs', 'esm'],
+    format: ['esm', 'cjs'],
     entry: ['src/**/*.ts'],
-    clean: true,
+    dts: true,
+    platform: 'browser',
   };
 });
