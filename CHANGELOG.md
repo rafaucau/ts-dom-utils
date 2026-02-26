@@ -1,5 +1,13 @@
 # ts-dom-utils
 
+## 2.3.0
+
+### Minor Changes
+
+- 5880a7b: Add HTML, SVG, and MathML tag name overloads for `qs` and `qsa`, enabling automatic type inference for tag selectors (e.g. `qs('div')` returns `HTMLDivElement | null`)
+- a0f525e: Add typed `aria-*` and `data-*` custom attribute support in `CreateElementOptions`
+- c69b5e4: Added `on` option to `createElement` for attaching event listeners. Supports a plain handler or an object with `handler` and `options` (e.g. `once`, `passive`).
+
 ## 2.2.1
 
 ### Patch Changes
