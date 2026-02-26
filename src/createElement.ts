@@ -34,7 +34,7 @@ export default function createElement<K extends keyof HTMLElementTagNameMap>(
 
     // class key
     if (key === 'class') {
-      // class can be a string or an array of strings
+      // a class can be a string or an array of strings
       if (Array.isArray(value)) {
         element.classList.add(...value);
       } else if (typeof value === 'string') {
@@ -43,7 +43,7 @@ export default function createElement<K extends keyof HTMLElementTagNameMap>(
     }
     // text key
     else if (key === 'text') {
-      element.textContent = value;
+      element.textContent = value as string;
     }
     // any other key
     else if (key in element) {
@@ -57,7 +57,7 @@ export default function createElement<K extends keyof HTMLElementTagNameMap>(
     }
     // any other attribute
     else {
-      element.setAttribute(key, value);
+      element.setAttribute(key, value as string);
     }
   });
 
@@ -70,6 +70,12 @@ type SpecialAttributes = {
   style?: Partial<CSSStyleDeclaration>;
 };
 
+type CustomAttributes = {
+  [key: `aria-${string}`]: string;
+  [key: `data-${string}`]: string;
+};
+
 export type CreateElementOptions<K extends keyof HTMLElementTagNameMap> =
-  (Partial<Omit<HTMLElementTagNameMap[K], keyof SpecialAttributes>> &
-    SpecialAttributes) & { [key: string]: any };
+  Partial<Omit<HTMLElementTagNameMap[K], keyof SpecialAttributes>> &
+    SpecialAttributes &
+    CustomAttributes;
