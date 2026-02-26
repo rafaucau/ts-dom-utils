@@ -11,8 +11,14 @@
  *   id: 'my-button',
  *   class: ['btn', 'btn-primary'],
  *   text: 'Click me',
- *   onclick: (event) => {
- *    console.log('clicked!', event)
+ *   on: {
+ *    click: (event) => {
+ *      console.log('clicked!', event)
+ *    },
+ *    mouseover: {
+ *      handler: (event) => console.log('hovered once!'),
+ *      options: { once: true }
+ *    }
  *   },
  *   dataset: {
  *     action: 'open-menu',
@@ -45,6 +51,20 @@ export default function createElement<K extends keyof HTMLElementTagNameMap>(
     else if (key === 'text') {
       element.textContent = value as string;
     }
+    // event
+    else if (key === 'on') {
+      Object.entries(value).forEach(([event, handlerOrObj]) => {
+        if (typeof handlerOrObj === 'function') {
+          element.addEventListener(event, handlerOrObj as EventListener);
+        } else if (handlerOrObj && typeof handlerOrObj === 'object') {
+          element.addEventListener(
+            event,
+            handlerOrObj.handler as EventListener,
+            handlerOrObj.options as EventListenerOptions,
+          );
+        }
+      });
+    }
     // any other key
     else if (key in element) {
       if (typeof value === 'object' && !Array.isArray(value)) {
@@ -64,10 +84,26 @@ export default function createElement<K extends keyof HTMLElementTagNameMap>(
   return element;
 }
 
-type SpecialAttributes = {
+type EventHandler<
+  K extends keyof HTMLElementTagNameMap,
+  E extends keyof HTMLElementEventMap,
+> =
+  | ((this: HTMLElementTagNameMap[K], event: HTMLElementEventMap[E]) => void)
+  | {
+      handler: (
+        this: HTMLElementTagNameMap[K],
+        event: HTMLElementEventMap[E],
+      ) => void;
+      options: AddEventListenerOptions;
+    };
+
+type SpecialAttributes<K extends keyof HTMLElementTagNameMap> = {
   class?: string | string[];
   text?: string;
   style?: Partial<CSSStyleDeclaration>;
+  on?: {
+    [E in keyof HTMLElementEventMap]?: EventHandler<K, E>;
+  };
 };
 
 type CustomAttributes = {
@@ -76,6 +112,6 @@ type CustomAttributes = {
 };
 
 export type CreateElementOptions<K extends keyof HTMLElementTagNameMap> =
-  Partial<Omit<HTMLElementTagNameMap[K], keyof SpecialAttributes>> &
-    SpecialAttributes &
+  Partial<Omit<HTMLElementTagNameMap[K], keyof SpecialAttributes<K>>> &
+    SpecialAttributes<K> &
     CustomAttributes;

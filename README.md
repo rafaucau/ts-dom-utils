@@ -45,8 +45,16 @@ const button = createElement('button', {
   id: 'my-button',
   class: ['btn', 'btn-primary'],
   text: 'Click me',
-  onclick: (event) => {
-    console.log('clicked!', event)
+  on: {
+    // simple function
+    click: (event) => {
+      console.log('clicked!', event)
+    },
+    // object with handler and options
+    mouseover: {
+      handler: (event) => console.log('hovered once!'),
+      options: { once: true }
+    }
   },
   dataset: {
     action: 'open-menu',
@@ -58,11 +66,11 @@ document.body.appendChild(button);
 // <button id="my-button" class="btn btn-primary" data-action="open-menu" aria-expanded="false">Click me</button>
 ```
 
-| Param   | Default   | Description                                                                                                                                                                         |
-|---------|-----------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| tagName | undefined | The tag name of the element type to create.                                                                                                                                         |
-| options | {}        | The options to use when creating the element. Options can include any attributes that can be passed to `setAttribute`, with `class`, and `text` as special options for enhancement. |
-| target  | document  | The Document in which to create the element.                                                                                                                                        |
+| Param   | Default   | Description                                                                                                                                                                               |
+|---------|-----------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| tagName | undefined | The tag name of the element type to create.                                                                                                                                               |
+| options | {}        | The options to use when creating the element. Options can include any attributes that can be passed to `setAttribute`, with `class`, `text`, and `on` as special options for enhancement. |
+| target  | document  | The Document in which to create the element.                                                                                                                                              |
 ---
 
 ## `DOMisReady`
