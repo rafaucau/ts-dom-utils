@@ -51,11 +51,11 @@ const button = createElement('button', {
   dataset: {
     action: 'open-menu',
   },
-  'aria-expandended': 'false',
+  'aria-expanded': 'false',
 });
 
 document.body.appendChild(button);
-// <button id="my-button" class="btn btn-primary" data-action="open-menu" aria-expandended="false">Click me</button>
+// <button id="my-button" class="btn btn-primary" data-action="open-menu" aria-expanded="false">Click me</button>
 ```
 
 | Param   | Default   | Description                                                                                                                                                                         |
