@@ -2,4 +2,4 @@
 "ts-dom-utils": patch
 ---
 
-Update dependecies
+Update dependencies
