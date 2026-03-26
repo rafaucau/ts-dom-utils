@@ -1,14 +1,18 @@
 {
+  "$schema": "https://www.schemastore.org/tsconfig.json",
   "compilerOptions": {
-    "target": "ES2022",
-    "module": "NodeNext",
-    "lib": ["DOM", "ES2022"],
-    "esModuleInterop": true,
+    "noEmit": true,
+    "lib": ["DOM", "ES2025"],
     "forceConsistentCasingInFileNames": true,
-    "strict": true,
     "skipLibCheck": true,
     "noUncheckedIndexedAccess": true,
-    "noEmit": true,
-    "isolatedModules": true
-  }
+    "isolatedModules": true,
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
+    "allowUnusedLabels": false,
+    "noFallthroughCasesInSwitch": true,
+    "allowUnreachableCode": false,
+    "noPropertyAccessFromIndexSignature": true
+  },
+  "include": ["src"]
 }
