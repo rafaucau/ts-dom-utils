@@ -1,5 +1,11 @@
 # ts-dom-utils
 
+## 2.3.2
+
+### Patch Changes
+
+- 7459799: Fix errors in createElement when class is an empty string or contains multiple class names
+
 ## 2.3.1
 
 ### Patch Changes
