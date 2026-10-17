@@ -21,8 +21,8 @@ Although it's written in TypeScript, it can also be used in JavaScript projects.
 ```shell
 # npm
 npm install ts-dom-utils
-# or Yarn
-yarn add ts-dom-utils
+# or pnpm
+pnpm add ts-dom-utils
 ```
 
 ## Features
