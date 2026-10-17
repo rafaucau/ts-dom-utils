@@ -7,7 +7,7 @@ export default defineConfig({
   pack: {
     minify: true,
     format: ['esm', 'cjs'],
-    entry: ['src/**/*.ts'],
+    entry: ['src/**/*.ts', '!src/**/__tests__/**'],
     dts: true,
     platform: 'browser',
     publint: true,
@@ -25,5 +25,9 @@ export default defineConfig({
     printWidth: 80,
     sortPackageJson: false,
     ignorePatterns: [],
+  },
+  test: {
+    include: ['src/__tests__/*.test.ts'],
+    environment: 'jsdom',
   },
 });
