@@ -44,7 +44,7 @@ export default function createElement<K extends keyof HTMLElementTagNameMap>(
       if (Array.isArray(value)) {
         element.classList.add(...value);
       } else if (typeof value === 'string') {
-        element.classList.add(value);
+        element.className = value;
       }
     }
     // text key

@@ -16,12 +16,12 @@ it('creates an element without classes', () => {
   expect(element.className).toBe('');
 });
 
-it.todo('accepts space-separated class names', () => {
+it('accepts space-separated class names', () => {
   const element = createElement('div', { class: 'test test2' });
   expect(element.className).toBe('test test2');
 });
 
-it.todo('accepts an empty class string', () => {
+it('accepts an empty class string', () => {
   const element = createElement('div', { class: '' });
   expect(element.className).toBe('');
 });
