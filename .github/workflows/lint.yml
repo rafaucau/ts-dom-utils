@@ -11,10 +11,11 @@ jobs:
     steps:
       - uses: actions/checkout@v6
 
-      - uses: actions/setup-node@v6
+      - uses: pnpm/setup@v3
         with:
-          node-version: 24
-          cache: npm
+          runtime: node@24
+          cache: true
+          install: true
+          require-lockfile: true
 
-      - run: npm ci
-      - run: npm run lint
+      - run: pnpm run lint

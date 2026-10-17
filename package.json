@@ -26,7 +26,7 @@
     "dev": "tsdown --watch",
     "lint": "tsc",
     "format": "prettier --write ./src",
-    "release": "npm run build && changeset publish"
+    "release": "pnpm run build && changeset publish"
   },
   "repository": {
     "type": "git",
@@ -45,11 +45,18 @@
   "homepage": "https://github.com/rafaucau/ts-dom-utils#readme",
   "funding": "https://github.com/rafaucau/ts-dom-utils?sponsor=1",
   "devDependencies": {
-    "@arethetypeswrong/core": "^0.18.2",
-    "@changesets/cli": "^3.0.0",
-    "prettier": "^3.8.1",
-    "publint": "^0.3.18",
-    "tsdown": "^0.21.5",
-    "typescript": "^6.0.2"
+    "@arethetypeswrong/core": "^0.18.5",
+    "@changesets/cli": "^3.0.3",
+    "prettier": "^3.9.10",
+    "publint": "^0.3.25",
+    "tsdown": "^0.23.1",
+    "typescript": "^7.0.2"
+  },
+  "devEngines": {
+    "packageManager": {
+      "name": "pnpm",
+      "onFail": "download",
+      "version": "^12.14.0"
+    }
   }
 }
