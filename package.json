@@ -6,6 +6,9 @@
   "types": "dist/index.d.ts",
   "type": "module",
   "sideEffects": false,
+  "engines": {
+    "node": "*"
+  },
   "files": [
     "dist"
   ],
@@ -22,11 +25,13 @@
     }
   },
   "scripts": {
-    "build": "tsdown",
-    "dev": "tsdown --watch",
-    "lint": "tsc",
-    "format": "prettier --write ./src",
-    "release": "pnpm run build && changeset publish"
+    "build": "vp pack",
+    "dev": "vp pack --watch --no-minify",
+    "lint": "vp lint",
+    "check": "vp check",
+    "format": "vp fmt",
+    "release": "pnpm run build && changeset publish",
+    "prepare": "vp config"
   },
   "repository": {
     "type": "git",
@@ -47,10 +52,9 @@
   "devDependencies": {
     "@arethetypeswrong/core": "^0.18.5",
     "@changesets/cli": "^3.0.3",
-    "prettier": "^3.9.10",
     "publint": "^0.3.25",
-    "tsdown": "^0.23.1",
-    "typescript": "^7.0.2"
+    "typescript": "^7.0.2",
+    "vite-plus": "catalog:"
   },
   "devEngines": {
     "packageManager": {

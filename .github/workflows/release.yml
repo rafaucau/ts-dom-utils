@@ -19,12 +19,11 @@ jobs:
     steps:
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
 
-      - uses: pnpm/setup@a0881977cd8ea73b1ed212236c99ca10dcc80cf4 # v3.1.1
+      - uses: voidzero-dev/setup-vp@68f39c78aaf39be468cabd2afb09c162574c84af # v1.21.2
         with:
-          runtime: node@24
+          node-version: 'lts'
           cache: true
-          install: true
-          require-lockfile: true
+          run-install: true
 
       - name: Create Release Pull Request or Publish to npm
         id: changesets
